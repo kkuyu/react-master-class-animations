@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import Motion00 from "./component/Motion00";
-import Motion01 from "./component/Motion01";
+import Motion01 from "./component/Motion01_variants";
 
 const Wrapper = styled.div`
   height: 100vh;
