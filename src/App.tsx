@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Motion00 from "./component/Motion00";
 import Motion01 from "./component/Motion01_variants";
+import Motion02 from "./component/Motion02";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -23,7 +24,7 @@ const Nav = styled.nav`
 
 function App() {
   const [number, setNumber] = useState(0);
-  const motions = [Motion00, Motion01];
+  const motions = [Motion00, Motion01, Motion02];
 
   return (
     <>
