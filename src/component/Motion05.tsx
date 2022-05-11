@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform, useViewportScroll } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const Box = styled(motion.div)`
@@ -15,7 +15,10 @@ const Box = styled(motion.div)`
 
 function Motion05() {
   const x = useMotionValue(0);
-  const scale = useTransform(x, [-800, 0, 800], [2, 1, 0.1]);
+  const rotateZ = useTransform(x, [-800, 800], [-360, 360]);
+  const gradient = useTransform(x, [-800, 800], ["linear-gradient(135deg, rgb(0, 210, 238), rgb(0, 83, 238))", "linear-gradient(135deg, rgb(0, 238, 155), rgb(238, 178, 0))"]);
+  const { scrollY, scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 3]);
 
   // no re render on useMotionValue change
   console.log("init", x);
@@ -24,10 +27,14 @@ function Motion05() {
     x.onChange(() => {
       console.log("x.onChange", x);
     });
-  }, [x]);
+
+    scrollY.onChange(() => {
+      console.log("scrollY.onChange", scrollY.get(), scrollYProgress.get());
+    });
+  }, [scrollY, scrollYProgress]);
 
   return (
-    <Box style={{ x, scale }} drag="x" dragSnapToOrigin>
+    <Box style={{ x, rotateZ, scale, background: gradient }} drag="x" dragSnapToOrigin>
       <button onClick={() => x.set(x.get() + 50)}>move to 50</button>
     </Box>
   );

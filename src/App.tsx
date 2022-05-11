@@ -8,12 +8,13 @@ import Motion03 from "./component/Motion03";
 import Motion04 from "./component/Motion04";
 import Motion05 from "./component/Motion05";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ wrapperStyle?: { [key: string]: any } }>`
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  ${(props) => props.wrapperStyle}
 `;
 
 const Nav = styled.nav`
@@ -38,7 +39,7 @@ function App() {
     { name: "Variants", component: Motion02 },
     { name: "Gestures", component: Motion03 },
     { name: "Drag", component: Motion04 },
-    { name: "MotionValue", component: Motion05 },
+    { name: "MotionValue", component: Motion05, wrapperStyle: { height: "200vh" } },
   ];
 
   return (
@@ -52,10 +53,10 @@ function App() {
         ))}
       </Nav>
       {motions.map((motion, index) => {
-        const Component = motions[index].component;
+        const Component = motion.component;
         return (
           index === number && (
-            <Wrapper key={index}>
+            <Wrapper key={index} wrapperStyle={motion.wrapperStyle}>
               <Component />
             </Wrapper>
           )
