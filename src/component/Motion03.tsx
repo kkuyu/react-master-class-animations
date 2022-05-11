@@ -15,8 +15,8 @@ const boxVariants = {
   drag: { backgroundColor: "rgb(46, 204, 113)", transition: { duration: 1 } },
 };
 
-function Motion02() {
+function Motion03() {
   return <Box drag variants={boxVariants} whileHover="hover" whileDrag="drag" whileTap="click" />;
 }
 
-export default Motion02;
+export default Motion03;
