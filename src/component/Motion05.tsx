@@ -1,8 +1,11 @@
 import styled from "styled-components";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const Box = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   height: 200px;
   background-color: rgba(255, 255, 255, 1);
@@ -12,6 +15,7 @@ const Box = styled(motion.div)`
 
 function Motion05() {
   const x = useMotionValue(0);
+  const scale = useTransform(x, [-800, 0, 800], [2, 1, 0.1]);
 
   // no re render on useMotionValue change
   console.log("init", x);
@@ -23,10 +27,9 @@ function Motion05() {
   }, [x]);
 
   return (
-    <>
-      <button onClick={() => x.set(200)}>click</button>
-      <Box style={{ x }} drag="x" dragSnapToOrigin />
-    </>
+    <Box style={{ x, scale }} drag="x" dragSnapToOrigin>
+      <button onClick={() => x.set(x.get() + 50)}>move to 50</button>
+    </Box>
   );
 }
 
