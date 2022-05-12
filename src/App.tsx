@@ -7,6 +7,7 @@ import Motion02 from "./component/Motion02";
 import Motion03 from "./component/Motion03";
 import Motion04 from "./component/Motion04";
 import Motion05 from "./component/Motion05";
+import Motion06 from "./component/Motion06";
 
 const Wrapper = styled.div<{ wrapperStyle?: { [key: string]: any } }>`
   height: 100vh;
@@ -40,6 +41,7 @@ function App() {
     { name: "Gestures", component: Motion03 },
     { name: "Drag", component: Motion04 },
     { name: "MotionValue", component: Motion05, wrapperStyle: { height: "200vh" } },
+    { name: "Path", component: Motion06 },
   ];
 
   return (
