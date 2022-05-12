@@ -29,7 +29,7 @@ const boxVariants = {
   },
 };
 
-function Motion06() {
+function Motion07() {
   const [showing, setShowing] = useState(false);
   const toggleShowing = () => setShowing((prev) => !prev);
   return (
@@ -40,4 +40,4 @@ function Motion06() {
   );
 }
 
-export default Motion06;
+export default Motion07;
