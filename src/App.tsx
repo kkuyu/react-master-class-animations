@@ -11,6 +11,7 @@ import Motion06 from "./component/Motion06";
 import Motion07 from "./component/Motion07";
 import Motion08 from "./component/Motion08";
 import Motion09 from "./component/Motion09";
+import Motion10 from "./component/Motion10";
 
 const Wrapper = styled.div<{ wrapperStyle?: { [key: string]: any } }>`
   height: 100vh;
@@ -48,6 +49,7 @@ function App() {
     { name: "Animations", component: Motion07 },
     { name: "Slider", component: Motion08 },
     { name: "Move", component: Motion09, wrapperStyle: { justifyContent: "space-around" } },
+    { name: "List", component: Motion10 },
   ];
 
   return (
